@@ -1,4 +1,4 @@
-class Card {
+class Card implements Comparable<Card> {
   int rank = 0;
   String suit = null;
   
@@ -20,6 +20,10 @@ class Card {
   
   public int getRank() {
     return rank;
+  }
+  
+  int compareTo(Card other) {
+    return this.getRank() - other.getRank();
   }
   
   public String toString() {
@@ -114,11 +118,24 @@ class Stock extends Deck{
   }
 }
 
-class DiscardPile {
+class Hand extends Deck{
+  
+  Hand() {
+  }
+  
+  //Sorting method for players hand, int determines how to sort
+  public void sortHand(int i) {
+  }
 }
 
-class Hand {
+class DiscardPile extends Deck{
+  
+  DiscardPile() {
+  }
 }
 
-class TableTop {
+class TableTop extends Deck{
+  
+  TableTop() {
+  }
 }
