@@ -15,6 +15,9 @@ class Card {
     suit = suits[s];
   }
   
+  Card() {
+  }
+  
   public int getRank() {
     return rank;
   }
@@ -25,11 +28,36 @@ class Card {
 }
 
 
-class DrawPile {
-  int decks;
-  ArrayList<Card> cards = new ArrayList<Card>();
+
+abstract class Deck {
+  ArrayList<Card> cards;
   
-  DrawPile(int p) {
+  public Card drawCard() {
+    Card c = cards.get(int(random(cards.size())));
+    cards.remove(cards.indexOf(c));
+    return c;
+  }
+  
+   public void drawCard(Deck other){
+     cards.add(other.drawCard());
+   }
+   
+   public ArrayList<Card> getCards() {
+     return cards;
+   }
+}
+
+
+
+class DeltDeck extends Deck {
+  int decks;
+  
+  DeltDeck() {
+    cards = new ArrayList<Card>();
+  }
+  
+  DeltDeck(int p) {
+    cards = new ArrayList<Card>();
     getNumDecks(p);
     
     for (int d=decks; d > 0; d--) {
@@ -43,22 +71,15 @@ class DrawPile {
     }
   }
   
-  public Card[] deal() {
+  public ArrayList<Card> deal() {
     Card topCard = drawCard();
-    Card[] hand = new Card[topCard.getRank()];
-    hand[0] = topCard;
+    ArrayList<Card> hand = new ArrayList<Card>();
+    hand.add(topCard);
     
     for (int i=topCard.getRank(); i > 1; i--) {
-      hand[i] = drawCard();
+      hand.add(drawCard());
     }
     return hand;
-  }
-  
-  public Card drawCard() {
-      Card c = cards.get(int(random(cards.size())));
-      cards.remove(cards.indexOf(c));
-      
-      return c;
   }
   
   void shuffle() {
@@ -84,4 +105,20 @@ class DrawPile {
       decks++;
     }
   }
+}
+
+class Stock extends Deck{
+  
+  Stock(Deck toAdd) {
+    cards = toAdd.getCards();
+  }
+}
+
+class DiscardPile {
+}
+
+class Hand {
+}
+
+class TableTop {
 }
