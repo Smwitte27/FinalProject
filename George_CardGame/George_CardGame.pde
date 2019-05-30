@@ -3,22 +3,20 @@ import controlP5.*;
 import processing.net.*;
 import g4p_controls.*;
 
+ControlFrame cf;
+
 ArrayList<String> names = new ArrayList<String>();
 //ArrayList<Player> players = new ArrayList<Player>();
 
 boolean startScreen = true;
-
-ControlP5 cp5;
 
 Server s;
 Client c;
 
 void setup() {
   size(700,400);
+  cf = new ControlFrame(this, 400, 800, "Table");
   noStroke();
-  cp5 = new ControlP5(this);
-  
-  cp5.addSlider("SLIDER");
 }
 
 void joinGame() {
@@ -36,5 +34,7 @@ void draw() {
     
   }
 }
+
+
 
 //http://learningprocessing.com/examples/
