@@ -2,7 +2,9 @@ import java.util.Collections;
 
 class Game {
   int numPlayers = 0;
+  
   ArrayList<Player> players;
+  
   boolean continuePlay = true;
   boolean inRound = false;
 
@@ -15,6 +17,7 @@ class Game {
 
     for (String name : names) {
       players.add(new Player(name, names.indexOf(name)));
+      
     }
   }
   
@@ -26,6 +29,8 @@ class Game {
 class Player {
   Hand hand = new Hand();
   TableTop table = new TableTop();
+  
+  PlayerFrame pf;
 
   String name = "";
   int seat = 0;
@@ -33,6 +38,7 @@ class Player {
   Player(String n, int s) {
     name = n;
     seat = s;
+    pf = new PlayerFrame(George_CardGame.this, 400, 400, name, seat);
   }
 
   public String getName() {
@@ -55,7 +61,7 @@ class Player {
     return hand.getCards();
   }
 
-  public ArrayList<Card> getTable() {
-    return table.getCards();
+  public ArrayList<Card> getTable(Player other) {
+    return other.table.getCards();
   }
 }

@@ -67,3 +67,43 @@ class ControlFrame extends PApplet {
     background(190);
   }
 }
+
+class PlayerFrame extends PApplet {
+    int w, h, seat;
+    String name;
+    PFont font;
+    
+  PApplet parent;
+  ControlP5 cp5;
+
+  public PlayerFrame(PApplet _parent, int _w, int _h, String _name, int _seat) {
+    super();   
+    parent = _parent;
+    w=_w;
+    h=_h;
+    name = _name;
+    seat = _seat;
+    PApplet.runSketch(new String[]{this.getClass().getName()}, this);
+  }
+
+  public void settings() {
+    size(w, h);
+  }
+
+  public void setup() {
+    surface.setLocation(10, 10);
+    font = createFont("Arial", 40);
+    cp5 = new ControlP5(this);
+    
+    cp5.addTextlabel("Player " + seat + ": " + name)
+       .plugTo(parent, "Label")
+       .setText("Player " + seat + ": " + name)
+       .setFont(font)
+       .setWidth(300)
+       .setPosition(w/2 - 150, 25);
+  }
+
+  void draw() {
+    background(0, 128, 0);
+  }
+}
