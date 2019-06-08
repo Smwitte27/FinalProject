@@ -1,38 +1,21 @@
 # FinalProject
 Final project for APCS
 
-One Paragraph of project description goes here
-
+This project is a cardgame called "George" that some people in my family made up awhile ago and have played it almost everytime we get together. This game shares some similarities with a plethera of different card games.
 ### Difficulties or opportunities you encountered along the way.
 
-The toughest part was...
+The toughest part of this project was getting all of the processes to actually output something and linking them all together to create an interactive game vs just the processes that happen to make it work.
 
 ### Most interesting piece of your code and explanation for what it does.
 
 ```Java
-void keyPressed() {
-if (keyCode == LEFT) {
-   tree= tree.getLeft();
-   System.out.println(tree.getValue());
-   String s=(String)tree.getValue();
-   fill(155);
-   textSize(50);
-} else if (keyCode == RIGHT) {
-   tree = tree.getRight();
-   System.out.println(tree.getValue());
-   String s=(String)tree.getValue();
-   fill(155);
-   textSize(50);
-} else if (tree.getLeft()==null&&tree.getRight()==null) {
-   System.out.println(tree.getValue());
-   tree=t.returnTree();
-}
-}
+
 ```
-This is the code that moves down the tree as decisions are made. It gets each value from both left and right and also casts the value to a String. If the progressions arrives at the leaf nodes, those values are printed.
+Explanation...
 ## Built With
 
 * [Processing](https://processing.org/) - The IDE used
+* [ControlP5](http://www.sojamo.de/libraries/controlP5/) - GUI Library used
 
 ## Authors
 
@@ -40,6 +23,4 @@ This is the code that moves down the tree as decisions are made. It gets each va
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* The idea of this came from a card game that my family plays alot when we get together
